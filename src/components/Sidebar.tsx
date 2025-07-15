@@ -14,15 +14,6 @@ const Sidebar = () => {
     navigate('/login');
   };
 
-  const handleLogout = () => {
-    // Clear JWT token from localStorage
-    localStorage.removeItem('jwtToken');
-    // Clear user profile from session storage
-    sessionStorage.removeItem('userProfile');
-    // Redirect to login page
-    navigate('/login');
-  };
-
   const navItems = [
     { label: 'Tasks', icon: ListTodo, path: '/' },
     { label: 'Completed', icon: CheckSquare, path: '/completed' },
