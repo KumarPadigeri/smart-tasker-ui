@@ -32,6 +32,7 @@ const LoginPage = () => {
   });
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [tasks, setTasks] = useState<any[]>([]);
   const navigate = useNavigate();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
