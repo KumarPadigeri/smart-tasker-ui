@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { LogOut, User, ListTodo, CheckSquare, Moon, Sun } from 'lucide-react';
+import { Moon, Sun } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import { useTheme } from '../contexts/ThemeContext';
