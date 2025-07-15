@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { getApiUrl, getAuthHeaders, getAuthHeadersNoContent, API_CONFIG } from '../../config/api';
+import { getApiUrl, getAuthHeadersNoContent, API_CONFIG } from '../../config/api';
 
 interface LoginFormState {
   email: string;
