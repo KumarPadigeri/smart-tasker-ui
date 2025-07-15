@@ -1,12 +1,13 @@
-// API Configuration
+  // API Configuration
 export const API_CONFIG = {
   // Base URL for all API calls
   BASE_URL: 'https://smart-tasker-p95e.onrender.com/smart-tasker/api',
+  BASE_URL_REGISTER: 'https://smart-tasker-p95e.onrender.com/smart-tasker/api',
   
   // Auth endpoints
   AUTH: {
     LOGIN: '/auth/login',
-    REGISTER: '/auth/register',
+    REGISTER: '/auth/register', // Will use BASE_URL_REGISTER
     ME: '/auth/me',
   },
   
@@ -21,19 +22,19 @@ export const API_CONFIG = {
   },
 };
 
-// Helper function to get full API URL
-export const getApiUrl = (endpoint: string): string => {
+export const getApiUrl = (endpoint: string, useRegisterBase = false): string => {
+  if (useRegisterBase) {
+    return `${API_CONFIG.BASE_URL_REGISTER}${endpoint}`;
+  }
   return `${API_CONFIG.BASE_URL}${endpoint}`;
 };
 
-// Helper function to get auth headers
 export const getAuthHeaders = (token: string) => ({
   'accept': '*/*',
   'Authorization': `Bearer ${token}`,
   'Content-Type': 'application/json',
 });
 
-// Helper function to get auth headers without content type (for GET requests)
 export const getAuthHeadersNoContent = (token: string) => ({
   'accept': '*/*',
   'Authorization': `Bearer ${token}`,
