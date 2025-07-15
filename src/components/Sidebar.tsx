@@ -1,11 +1,18 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import { ListTodo, CheckSquare, User, LogOut } from 'lucide-react';
-import { useTheme } from '../contexts/ThemeContext';
 
 const Sidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { theme } = useTheme();
+
+  const handleLogout = () => {
+    // Clear JWT token from localStorage
+    localStorage.removeItem('jwtToken');
+    // Clear user profile from session storage
+    sessionStorage.removeItem('userProfile');
+    // Redirect to login page
+    navigate('/login');
+  };
 
   const handleLogout = () => {
     // Clear JWT token from localStorage
