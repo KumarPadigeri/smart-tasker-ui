@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { getApiUrl, API_CONFIG } from '../../config/api';
 
 interface RegisterFormData {
   name: string;
@@ -26,6 +27,8 @@ const RegisterPage: React.FC = () => {
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [isLoading, setIsLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
 
   const validateName = (name: string): string | undefined => {
     if (!name.trim()) return 'Name is required';
@@ -95,12 +98,35 @@ const RegisterPage: React.FC = () => {
 
     setIsLoading(true);
     setErrors({});
+    setSuccess(false);
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      console.log('Registration successful:', formData);
-    } catch (error) {
-      setErrors({ general: 'Registration failed. Please try again.' });
+      const response = await fetch(getApiUrl(API_CONFIG.AUTH.REGISTER, true), {
+        method: 'POST',
+        headers: {
+          'accept': '*/*',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
+      if (!response.ok) {
+        let errorMsg = 'Registration failed';
+        try {
+          const errData = await response.json();
+          if (errData && errData.message) errorMsg = errData.message;
+        } catch {}
+        throw new Error(errorMsg);
+      }
+      setSuccess(true);
+      setTimeout(() => {
+        navigate('/login');
+      }, 1500);
+    } catch (error: any) {
+      setErrors({ general: error.message || 'Registration failed. Please try again.' });
     } finally {
       setIsLoading(false);
     }
@@ -187,6 +213,11 @@ const RegisterPage: React.FC = () => {
             {errors.general && (
               <p className="text-sm text-red-500 bg-red-100 border border-red-200 p-2 rounded-lg">
                 {errors.general}
+              </p>
+            )}
+            {success && (
+              <p className="text-sm text-green-600 bg-green-100 border border-green-200 p-2 rounded-lg text-center">
+                Registration successful! Redirecting to login...
               </p>
             )}
 
