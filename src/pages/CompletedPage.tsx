@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LogOut, User, ListTodo, CheckSquare, Moon, Sun } from 'lucide-react';
+import { Moon, Sun } from 'lucide-react';
 import Sidebar from '../components/Sidebar';
 import { useTheme } from '../contexts/ThemeContext';
 import { getApiUrl, getAuthHeadersNoContent, API_CONFIG } from '../config/api';
