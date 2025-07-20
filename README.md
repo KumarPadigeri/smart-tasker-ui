@@ -1,69 +1,96 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Smart Tasker Frontend
 
-Currently, two official plugins are available:
+Smart Tasker is a modern, full-featured task management application that allows users to register, log in, and manage their daily tasks with a clean and responsive UI. This frontend is built using **React (Vite)** and **Tailwind CSS**, and integrates with the Smart Tasker backend (Spring Boot with JWT authentication and PostgreSQL).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 🔐 **JWT Authentication** (Login/Register)
+- ✅ **Create, Edit, Complete, Delete Tasks**
+- 📋 **View Completed & Pending Tasks**
+- 📧 **Welcome Email on Registration**
+- 🌙 **Responsive Premium UI** (Desktop)
+- ⚡ **Fast Build Setup** with Vite + Tailwind
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 🛠️ Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Frontend:** React (Vite), TypeScript, Tailwind CSS, React Router
+- **State Management:** useState, useEffect (optional Redux for scaling)
+- **Backend Integration:** REST APIs with JWT Auth
+
+---
+
+## 🏁 Getting Started
+
+### Prerequisites
+
+- Node.js (v18+ recommended)
+- npm or yarn
+- Smart Tasker Backend running (see [Backend Repo](https://github.com/KumarPadigeri/smart-tasker))
+
+### Installation
+
+```bash
+git clone https://github.com/KumarPadigeri/smart-tasker-ui.git
+cd smart-tasker-ui
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+### Build
+
+```bash
+npm run build
+```
+
+---
+
+## 🔧 Environment Variables
+
+Create a `.env` file in the root with the following:
+
+```env
+VITE_API_BASE_URL=http://localhost:8080/api
+```
+
+Make sure this matches your backend URL.
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+│
+├── components/         # Reusable UI components
+├── pages/              # App pages (Login, Register, Dashboard, etc.)
+├── services/           # API services (axios, auth)
+├── hooks/              # Custom React hooks (optional)
+├── config/             # API base URLs, headers, etc.
+├── App.tsx             # Main App routing
+└── main.tsx            # Entry point
+```
+
+---
+
+## 🧪 Future Enhancements
+
+- Task Categories and Filters
+- Due Date Reminders
+- Drag & Drop Task Sorting
+- Progressive Web App (PWA)
+
+---
+
+## 👨‍💻 Author
+
+Kumara Swamy Padigeri  
+[LinkedIn](https://www.linkedin.com/in/kumaraswamypadigeri) | [Portfolio](https://kumarpadigeri.wixsite.com/web-developer)
